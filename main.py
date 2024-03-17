@@ -306,4 +306,4 @@ if __name__ == '__main__':
 
         coefficient_continuation = get_coefficient_field(output[1:])
         print(coefficient_continuation)
-        stop = int(input("D
+        stop = int(input("Do you want to quit?: "))  # Input 1 to end the loop. This is for test purposes
