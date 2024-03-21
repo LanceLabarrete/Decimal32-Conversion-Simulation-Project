@@ -268,7 +268,7 @@ def get_coefficient_field(nums):
 
 
 def merge_num_list(nums):
-    print(nums)
+    # print(nums)
     decimal1 = most_significant_bit(nums[0])
     decimal2 = most_significant_bit(nums[1])
     decimal3 = most_significant_bit(nums[2])
@@ -277,6 +277,36 @@ def merge_num_list(nums):
     mergedlist.extend(decimal2)
     mergedlist.extend(decimal3)
     return mergedlist
+
+
+def normalize(decimalnumbers, basenumber):
+    if decimalnumbers[-2] == '.' and decimalnumbers[-1] == '0':
+        decimalnumbers.pop()
+        decimalnumbers.pop()
+    else:
+        decimalnumbers = move_decimal_dot(decimalnumbers)
+        decimalnumbers.pop()
+
+    count_digits = len(decimalnumbers)
+
+    if count_digits < 7:
+        max = 7
+        while count_digits < max:
+            decimalnumbers.insert(0, '0')
+            count_digits += 1
+
+    return decimalnumbers
+
+
+def move_decimal_dot(decimalnumbers):
+    while True:
+        if decimalnumbers[-1] != '.':
+            indexM = decimalnumbers.index('.')
+            indexN = decimalnumbers.index('.') + 1
+            decimalnumbers[indexM], decimalnumbers[indexN] = decimalnumbers[indexN], decimalnumbers[indexM]
+        else:
+            break
+    return decimalnumbers
 
 
 if __name__ == '__main__':
@@ -291,8 +321,8 @@ if __name__ == '__main__':
 
         if user_input[0] == '-':
             user_input.remove('-')
-        user_input.remove('.')
-        user_input.pop()
+
+        user_input = normalize(user_input, base_number)
         output = [int(num) for num in user_input]
         # -------------------------------------------
 
@@ -305,5 +335,5 @@ if __name__ == '__main__':
         print("Exponent Continuation: ", exponent_continuation)
 
         coefficient_continuation = get_coefficient_field(output[1:])
-        print(coefficient_continuation)
+        print("Coefficient Continuation: ", coefficient_continuation)
         stop = int(input("Do you want to quit?: "))  # Input 1 to end the loop. This is for test purposes
