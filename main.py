@@ -1,3 +1,8 @@
+import sys
+from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtUiTools import QUiLoader
+from gui import MainWindow
+
 import math
 
 
@@ -321,8 +326,7 @@ def merge_num_list(nums):
     mergedlist.extend(decimal2)
     mergedlist.extend(decimal3)
     return mergedlist
-
-
+    
 def normalize(decimalnumbers, basenumber):
     isBaseNumberUpdated = "False"
     if decimalnumbers[-2] == '.' and decimalnumbers[-1] == '0':
@@ -474,7 +478,15 @@ def which_rounding_method(number):
     elif input == 3:  # ties to nearest even
         number = round(number)
         return number
-
-
+      
 if __name__ == '__main__':
-    main()
+    loader = QUiLoader()
+    app = QtWidgets.QApplication(sys.argv)
+    
+    window = MainWindow()
+    window.show()
+
+    app.exec_()
+
+#if __name__ == '__main__':
+    #main()
