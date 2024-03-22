@@ -1,3 +1,6 @@
+import sys
+from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtUiTools import QUiLoader
 
 def sign_bit(index):
     if index == '-':
@@ -281,29 +284,34 @@ def merge_num_list(nums):
 
 if __name__ == '__main__':
     # Main function
-    stop = 0
-    while stop != 1:
-        user_input = float(input("Input a decimal number: "))
-        base_number = int(input("Input the base number: "))
-        user_input = list(str(user_input))
-        signBit = sign_bit(user_input[0])  # Gets the sign bit
-        print("Sign bit: ", signBit)
+    #stop = 0
+    #while stop != 1:
+    #    user_input = float(input("Input a decimal number: "))
+    #    base_number = int(input("Input the base number: "))
+    #    user_input = list(str(user_input))
+    #    signBit = sign_bit(user_input[0])  # Gets the sign bit
+    #    print("Sign bit: ", signBit)
 
-        if user_input[0] == '-':
-            user_input.remove('-')
-        user_input.remove('.')
-        user_input.pop()
-        output = [int(num) for num in user_input]
-        # -------------------------------------------
+    #    if user_input[0] == '-':
+    #        user_input.remove('-')
+    #    user_input.remove('.')
+    #    user_input.pop()
+    #    output = [int(num) for num in user_input]
+    #    # -------------------------------------------
 
-        msb = most_significant_bit(output[0])
-        exponentPrime = exponent_prime_hexadecimal(base_number)
-        combination_field = find_combination_field(output[0], msb, exponentPrime)
-        print("Combination field: ", combination_field)
+    #    msb = most_significant_bit(output[0])
+    #    exponentPrime = exponent_prime_hexadecimal(base_number)
+    #    combination_field = find_combination_field(output[0], msb, exponentPrime)
+    #    print("Combination field: ", combination_field)
 
-        exponent_continuation = get_exponent_continuation(exponentPrime)
-        print("Exponent Continuation: ", exponent_continuation)
+    #    exponent_continuation = get_exponent_continuation(exponentPrime)
+    #    print("Exponent Continuation: ", exponent_continuation)
 
-        coefficient_continuation = get_coefficient_field(output[1:])
-        print(coefficient_continuation)
-        stop = int(input("Do you want to quit?: "))  # Input 1 to end the loop. This is for test purposes
+    #    coefficient_continuation = get_coefficient_field(output[1:])
+    #    print(coefficient_continuation)
+    #    stop = int(input("Do you want to quit?: "))  # Input 1 to end the loop. This is for test purposes
+    loader = QUiLoader()
+    app = QtWidgets.QApplication(sys.argv)
+    window = loader.load("gui/main_window.ui", None)
+    window.show()
+    app.exec_()
