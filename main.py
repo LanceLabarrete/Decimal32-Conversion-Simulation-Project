@@ -1,6 +1,7 @@
 import sys
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtUiTools import QUiLoader
+from gui import MainWindow
 
 def sign_bit(index):
     if index == '-':
@@ -280,7 +281,7 @@ def merge_num_list(nums):
     mergedlist.extend(decimal2)
     mergedlist.extend(decimal3)
     return mergedlist
-
+    
 
 if __name__ == '__main__':
     # Main function
@@ -312,6 +313,8 @@ if __name__ == '__main__':
     #    stop = int(input("Do you want to quit?: "))  # Input 1 to end the loop. This is for test purposes
     loader = QUiLoader()
     app = QtWidgets.QApplication(sys.argv)
-    window = loader.load("gui/main_window.ui", None)
+    
+    window = MainWindow()
     window.show()
+
     app.exec_()
