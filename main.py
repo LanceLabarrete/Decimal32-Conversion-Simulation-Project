@@ -27,9 +27,6 @@ def main():
     # user_input = list(str(user_input))
     # signBit = sign_bit(user_input[0])  # Gets the sign bit
 
-    print(window.ui.LnEd_userInput.text)
-    print(window.ui.LnEd_baseInput.text)
-
     user_input = float(window.ui.LnEd_userInput.text())
     base_number = int(window.ui.LnEd_baseInput.text())
 
@@ -64,14 +61,6 @@ def main():
                   exponent_continuation, coefficient_continuation)
     output_hex(signBit, combination_field,
                exponent_continuation, coefficient_continuation)
-
-    # print("Sign bit: ", signBit)
-    # print("Combination field: ", combination_field)
-    # print("Exponent Continuation: ", exponent_continuation)
-    # print("Coefficient Continuation: ", coefficient_continuation)
-    # Use the above prints to test
-    # Input 1 to end the loop. This is for test purposes
-    # stop = int(input("Do you want to quit?: "))
 
 
 def sign_bit(index):
@@ -355,21 +344,32 @@ def merge_num_list(nums):
 
 
 def normalize(decimalnumbers, basenumber):
+    # print("---BEFORE---")
+    # print("decimalnumbers:", decimalnumbers)
+    # print("basenumber", basenumber)
+    # print("---AFTER----")
+
     isBaseNumberUpdated = "False"
     if decimalnumbers[-2] == '.' and decimalnumbers[-1] == '0':
         decimalnumbers.pop()
         decimalnumbers.pop()
     else:  # move decimal dot to the right
-        temp = decimalnumbers
+        # temp = decimalnumbers
         decimalnumbers = move_decimal_dot(decimalnumbers)
-        basenumber = update_base_number(temp, basenumber)
+        # basenumber = update_base_number(temp, basenumber)
+        basenumber = update_base_number(decimalnumbers, basenumber)
         isBaseNumberUpdated = "True"
         decimalnumbers.pop()
 
+    # print("decimalnumbers:", decimalnumbers)
+    # print("basenumber", basenumber)
+
     count_digits = len(decimalnumbers)
     if count_digits < 7:  # if there are less than 7 digits, pad zeros on the left
-        max = 7
-        while count_digits < max:
+        # "max" is a function under math library
+        # not a good idea to use it as a variable
+        max_bits = 7
+        while count_digits < max_bits:
             decimalnumbers.insert(0, '0')
             count_digits += 1
 
@@ -454,12 +454,14 @@ def output_hex(signbit, combinationfield, exponentcont, coefficientcont):
     combined_list.extend(combinationfield)
     combined_list.extend(exponentcont)
     combined_list.extend(coefficientcont)
-    hex_output = [hex_converter(combined_list[0:4]), hex_converter(combined_list[4:8]),
-                  hex_converter(combined_list[8:12]), hex_converter(
-                      combined_list[12:16]),
-                  hex_converter(combined_list[16:20]), hex_converter(
-                      combined_list[20:24]),
-                  hex_converter(combined_list[24:28]), hex_converter(combined_list[28:])]
+    hex_output = [hex_converter(combined_list[0:4]),
+                  hex_converter(combined_list[4:8]),
+                  hex_converter(combined_list[8:12]),
+                  hex_converter(combined_list[12:16]),
+                  hex_converter(combined_list[16:20]),
+                  hex_converter(combined_list[20:24]),
+                  hex_converter(combined_list[24:28]),
+                  hex_converter(combined_list[28:])]
     final_output = ''.join(map(str, hex_output))
     print(final_output)
 
@@ -489,9 +491,9 @@ def hex_converter(decimaldigits):
         return '9'
     elif decimaldigits[0] == 1 and decimaldigits[1] == 0 and decimaldigits[2] == 1 and decimaldigits[3] == 0:
         return 'A'
-    elif decimaldigits[0] == 1 and decimaldigits[1] == 0 and decimaldigits[2] == 1 and decimaldigits[3] == 0:
-        return 'B'
     elif decimaldigits[0] == 1 and decimaldigits[1] == 0 and decimaldigits[2] == 1 and decimaldigits[3] == 1:
+        return 'B'
+    elif decimaldigits[0] == 1 and decimaldigits[1] == 1 and decimaldigits[2] == 0 and decimaldigits[3] == 0:
         return 'C'
     elif decimaldigits[0] == 1 and decimaldigits[1] == 1 and decimaldigits[2] == 0 and decimaldigits[3] == 1:
         return 'D'
