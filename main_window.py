@@ -80,11 +80,11 @@ class Ui_MainWindow(object):
 
         self.vrtLO_main.addLayout(self.hrzLO_input)
 
-        self.label = QLabel(self.centralwidget)
-        self.label.setObjectName(u"label")
-        self.label.setEnabled(True)
+        self.Lb_errorMessage = QLabel(self.centralwidget)
+        self.Lb_errorMessage.setObjectName(u"Lb_errorMessage")
+        self.Lb_errorMessage.setEnabled(True)
 
-        self.vrtLO_main.addWidget(self.label)
+        self.vrtLO_main.addWidget(self.Lb_errorMessage)
 
         self.vrtLO_roundingMeth = QVBoxLayout()
         self.vrtLO_roundingMeth.setObjectName(u"vrtLO_roundingMeth")
@@ -216,7 +216,7 @@ class Ui_MainWindow(object):
         self.LnEd_userInput.setText(QCoreApplication.translate("MainWindow", u"69", None))
         self.Lb_userInput.setText(QCoreApplication.translate("MainWindow", u"x 10 ^", None))
         self.LnEd_baseInput.setText(QCoreApplication.translate("MainWindow", u"1", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#ff0000;\">ERROR: Sample Error</span></p></body></html>", None))
+        self.Lb_errorMessage.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#ff0000;\">ERROR: Sample Error</span></p></body></html>", None))
         self.Lb_roundingMeth.setText(QCoreApplication.translate("MainWindow", u"Rounding methods:", None))
         self.rdBtn_nearEven.setText(QCoreApplication.translate("MainWindow", u"Round to Nearest Zero Ties to Nearest Even", None))
         self.rdBtn_floor.setText(QCoreApplication.translate("MainWindow", u"Floor", None))
