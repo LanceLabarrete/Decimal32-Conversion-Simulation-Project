@@ -1,9 +1,9 @@
-import math
-import sys
-from PySide2 import QtCore, QtGui, QtWidgets
-from PySide2.QtUiTools import QUiLoader
-from gui import MainWindow
 from main_window import Ui_MainWindow
+from gui import MainWindow
+from PySide2.QtUiTools import QUiLoader
+from PySide2 import QtCore, QtGui, QtWidgets
+import sys
+import math
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -13,7 +13,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
 
 
-loader = QUiLoader()
 app = QtWidgets.QApplication(sys.argv)
 window = MainWindow()
 
