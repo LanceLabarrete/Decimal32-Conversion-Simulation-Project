@@ -88,6 +88,7 @@ class Ui_MainWindow(object):
         self.Lb_errorMessage = QLabel(self.centralwidget)
         self.Lb_errorMessage.setObjectName(u"Lb_errorMessage")
         self.Lb_errorMessage.setEnabled(True)
+        self.Lb_errorMessage.setWordWrap(True)
 
         self.vrtLO_main.addWidget(self.Lb_errorMessage)
 
