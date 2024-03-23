@@ -177,6 +177,9 @@
             <property name="checked">
              <bool>true</bool>
             </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btnGrp_roundMeth</string>
+            </attribute>
            </widget>
           </item>
           <item>
@@ -184,6 +187,9 @@
             <property name="text">
              <string>Floor</string>
             </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btnGrp_roundMeth</string>
+            </attribute>
            </widget>
           </item>
           <item>
@@ -191,6 +197,9 @@
             <property name="text">
              <string>Ceiling</string>
             </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btnGrp_roundMeth</string>
+            </attribute>
            </widget>
           </item>
           <item>
@@ -198,6 +207,9 @@
             <property name="text">
              <string>Round to Nearest Zero</string>
             </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btnGrp_roundMeth</string>
+            </attribute>
            </widget>
           </item>
          </layout>
@@ -373,4 +385,7 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="btnGrp_roundMeth"/>
+ </buttongroups>
 </ui>

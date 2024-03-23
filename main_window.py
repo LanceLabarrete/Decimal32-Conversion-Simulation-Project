@@ -104,22 +104,28 @@ class Ui_MainWindow(object):
         self.vrtLO_roundingOpt.setObjectName(u"vrtLO_roundingOpt")
         self.vrtLO_roundingOpt.setContentsMargins(5, 5, 5, 5)
         self.rdBtn_nearEven = QRadioButton(self.centralwidget)
+        self.btnGrp_roundMeth = QButtonGroup(MainWindow)
+        self.btnGrp_roundMeth.setObjectName(u"btnGrp_roundMeth")
+        self.btnGrp_roundMeth.addButton(self.rdBtn_nearEven)
         self.rdBtn_nearEven.setObjectName(u"rdBtn_nearEven")
         self.rdBtn_nearEven.setChecked(True)
 
         self.vrtLO_roundingOpt.addWidget(self.rdBtn_nearEven)
 
         self.rdBtn_floor = QRadioButton(self.centralwidget)
+        self.btnGrp_roundMeth.addButton(self.rdBtn_floor)
         self.rdBtn_floor.setObjectName(u"rdBtn_floor")
 
         self.vrtLO_roundingOpt.addWidget(self.rdBtn_floor)
 
         self.rdBtn_ceil = QRadioButton(self.centralwidget)
+        self.btnGrp_roundMeth.addButton(self.rdBtn_ceil)
         self.rdBtn_ceil.setObjectName(u"rdBtn_ceil")
 
         self.vrtLO_roundingOpt.addWidget(self.rdBtn_ceil)
 
         self.rdBtn_nearZero = QRadioButton(self.centralwidget)
+        self.btnGrp_roundMeth.addButton(self.rdBtn_nearZero)
         self.rdBtn_nearZero.setObjectName(u"rdBtn_nearZero")
 
         self.vrtLO_roundingOpt.addWidget(self.rdBtn_nearZero)
