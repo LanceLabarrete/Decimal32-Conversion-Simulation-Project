@@ -68,13 +68,10 @@
            </font>
           </property>
           <property name="text">
-           <string/>
+           <string>69</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
-          </property>
-          <property name="placeholderText">
-           <string>Decimal-32 Floating Point</string>
           </property>
          </widget>
         </item>
@@ -115,13 +112,10 @@
            </font>
           </property>
           <property name="text">
-           <string/>
+           <string>1</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
-          </property>
-          <property name="placeholderText">
-           <string>e</string>
           </property>
          </widget>
         </item>
@@ -183,9 +177,6 @@
             <property name="checked">
              <bool>true</bool>
             </property>
-            <attribute name="buttonGroup">
-             <string notr="true">btnGrp_roundMeth</string>
-            </attribute>
            </widget>
           </item>
           <item>
@@ -193,9 +184,6 @@
             <property name="text">
              <string>Floor</string>
             </property>
-            <attribute name="buttonGroup">
-             <string notr="true">btnGrp_roundMeth</string>
-            </attribute>
            </widget>
           </item>
           <item>
@@ -203,9 +191,6 @@
             <property name="text">
              <string>Ceiling</string>
             </property>
-            <attribute name="buttonGroup">
-             <string notr="true">btnGrp_roundMeth</string>
-            </attribute>
            </widget>
           </item>
           <item>
@@ -213,9 +198,6 @@
             <property name="text">
              <string>Round to Nearest Zero</string>
             </property>
-            <attribute name="buttonGroup">
-             <string notr="true">btnGrp_roundMeth</string>
-            </attribute>
            </widget>
           </item>
          </layout>
@@ -329,13 +311,10 @@
            </font>
           </property>
           <property name="text">
-           <string/>
+           <string>0x45</string>
           </property>
           <property name="readOnly">
            <bool>true</bool>
-          </property>
-          <property name="placeholderText">
-           <string>XXXX XXXX</string>
           </property>
          </widget>
         </item>
@@ -347,13 +326,10 @@
            </font>
           </property>
           <property name="text">
-           <string/>
+           <string>0b0b1000101</string>
           </property>
           <property name="readOnly">
            <bool>true</bool>
-          </property>
-          <property name="placeholderText">
-           <string>X XXXXX XXXXXX XXXXXXXXXXXXXXXXXXXX</string>
           </property>
          </widget>
         </item>
@@ -397,7 +373,4 @@
  </widget>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="btnGrp_roundMeth"/>
- </buttongroups>
 </ui>
