@@ -545,10 +545,21 @@ def list_to_float(digits):
 
 
 def output_binary(signbit, combinationfield, exponentcont, coefficientcont):
+
     combinedstring1 = str(signbit)
     combinedstring2 = ''.join(map(str, combinationfield))
     combinedstring3 = ''.join(map(str, exponentcont))
     combinedstring4 = ''.join(map(str, coefficientcont))
+
+    if combinedstring2 == "11111":
+        window.ui.LnEd_binary.setText("NaN")
+        return
+    elif combinedstring2 == "11110":
+        if combinedstring1 == "0":
+            window.ui.LnEd_binary.setText("+Infinity")
+        elif combinedstring1 == "1":
+            window.ui.LnEd_binary.setText("-Infinity")
+        return
 
     print(combinedstring1, combinedstring2, combinedstring3, combinedstring4)
 
@@ -559,6 +570,19 @@ def output_binary(signbit, combinationfield, exponentcont, coefficientcont):
 
 
 def output_hex(signbit, combinationfield, exponentcont, coefficientcont):
+    combinedstring1 = str(signbit)
+    combinedstring2 = ''.join(map(str, combinationfield))
+
+    if combinedstring2 == "11111":
+        window.ui.LnEd_hexadecimal.setText("NaN")
+        return
+    elif combinedstring2 == "11110":
+        if combinedstring1 == "0":
+            window.ui.LnEd_hexadecimal.setText("+Infinity")
+        elif combinedstring1 == "1":
+            window.ui.LnEd_hexadecimal.setText("-Infinity")
+        return
+
     combined_list = [signbit]
     combined_list.extend(combinationfield)
     combined_list.extend(exponentcont)
