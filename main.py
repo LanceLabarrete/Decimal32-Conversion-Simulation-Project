@@ -679,15 +679,40 @@ def show_rounding_method(input_string):
     toggle_enable_buttongroup(window.ui.btnGrp_roundMeth, False)
 
 
+def print_into_file():
+    filename = "output.txt"
+
+    binary_output = window.ui.LnEd_binary.text()
+    hexadecimal_output = window.ui.LnEd_hexadecimal.text()
+
+    popup = QtWidgets.QMessageBox()
+
+    if not binary_output or not hexadecimal_output:
+        popup.setText("Nothing has been inputted yet! "
+                      + "Saving text file aborted.")
+        popup.exec_()
+        return
+
+    text_file = open(filename, "w")
+
+    text_file.write("Binary representation: {0}\n".format(binary_output))
+    text_file.write(
+        "Hexadecimal representation: {0}".format(hexadecimal_output))
+    text_file.close()
+
+    popup.setText("An output file ({0}) has been saved!".format(filename))
+    popup.exec_()
+
+
 if __name__ == '__main__':
     window.show()
     window.ui.Lb_errorMessage.hide()
     # toggle_visibility_layout(window.ui.vrtLO_roundingMeth, False)
     toggle_enable_buttongroup(window.ui.btnGrp_roundMeth, False)
 
-    window.ui.LnEd_binary.setText("baby")
     window.ui.Btn_convert.pressed.connect(main)
     window.ui.LnEd_userInput.returnPressed.connect(main)
     window.ui.LnEd_baseInput.returnPressed.connect(main)
     window.ui.LnEd_userInput.textChanged.connect(show_rounding_method)
+    window.ui.PshBtn_printText.pressed.connect(print_into_file)
     app.exec_()
