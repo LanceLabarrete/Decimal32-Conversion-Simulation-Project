@@ -30,14 +30,6 @@ window = MainWindow()
 
 
 def main():
-    # Main function
-    # stop = 0
-    # while stop != 1:
-    # user_input = float(input("Input a decimal number: "))
-    # base_number = int(input("Input the base number: "))
-    # user_input = list(str(user_input))
-    # signBit = sign_bit(user_input[0])  # Gets the sign bit
-
     user_input = window.ui.LnEd_userInput.text()
     base_number = window.ui.LnEd_baseInput.text()
 
@@ -471,8 +463,9 @@ def normalize(decimalnumbers, basenumber):
                 break
 
         float_digits = list_to_float(decimalnumbers)
-        float_digits = round(float_digits)
-        # float_digits = which_rounding_method(float_digits) #lets the user decide which rounding method
+        # float_digits = round(float_digits)
+        # lets the user decide which rounding method
+        float_digits = which_rounding_method(float_digits)
         decimalnumbers = list(str(float_digits))
 
     if isBaseNumberUpdated == "True":
@@ -576,16 +569,18 @@ def hex_converter(decimaldigits):
 
 
 def which_rounding_method(number):
-    if input == 0:  # nearest zero
+    selected_id = window.ui.btnGrp_roundMeth.checkedId()
+
+    if selected_id == 0:  # nearest zero
         if number >= 0:
             return int(number)
         else:
             return -int(-number)
-    elif input == 1:  # floor
+    elif selected_id == 1:  # floor
         return math.floor(number)
-    elif input == 2:  # ceiling
+    elif selected_id == 2:  # ceiling
         return math.ceil(number)
-    elif input == 3:  # ties to nearest even
+    elif selected_id == 3:  # ties to nearest even
         number = round(number)
         return number
 
