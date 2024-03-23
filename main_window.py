@@ -228,9 +228,9 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.LnEd_userInput.setText(QCoreApplication.translate("MainWindow", u"69", None))
+        self.LnEd_userInput.setText("")
         self.Lb_userInput.setText(QCoreApplication.translate("MainWindow", u"x 10 ^", None))
-        self.LnEd_baseInput.setText(QCoreApplication.translate("MainWindow", u"1", None))
+        self.LnEd_baseInput.setText("")
         self.Lb_errorMessage.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#ff0000;\">ERROR: Sample Error</span></p></body></html>", None))
         self.Lb_roundingMeth.setText(QCoreApplication.translate("MainWindow", u"Rounding methods:", None))
         self.rdBtn_nearEven.setText(QCoreApplication.translate("MainWindow", u"Round to Nearest Zero Ties to Nearest Even", None))
@@ -240,8 +240,8 @@ class Ui_MainWindow(object):
         self.Btn_convert.setText(QCoreApplication.translate("MainWindow", u"Convert", None))
         self.Lb_binary.setText(QCoreApplication.translate("MainWindow", u"Binary", None))
         self.Lb_hexadecimal.setText(QCoreApplication.translate("MainWindow", u"Hexadecimal", None))
-        self.LnEd_hexadecimal.setText(QCoreApplication.translate("MainWindow", u"0x45", None))
-        self.LnEd_binary.setText(QCoreApplication.translate("MainWindow", u"0b0b1000101", None))
+        self.LnEd_hexadecimal.setText("")
+        self.LnEd_binary.setText("")
         self.PshBtn_printText.setText(QCoreApplication.translate("MainWindow", u"Print into text file", None))
     # retranslateUi
 

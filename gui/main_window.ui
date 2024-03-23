@@ -68,7 +68,7 @@
            </font>
           </property>
           <property name="text">
-           <string>69</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -112,7 +112,7 @@
            </font>
           </property>
           <property name="text">
-           <string>1</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -323,7 +323,7 @@
            </font>
           </property>
           <property name="text">
-           <string>0x45</string>
+           <string/>
           </property>
           <property name="readOnly">
            <bool>true</bool>
@@ -338,7 +338,7 @@
            </font>
           </property>
           <property name="text">
-           <string>0b0b1000101</string>
+           <string/>
           </property>
           <property name="readOnly">
            <bool>true</bool>
