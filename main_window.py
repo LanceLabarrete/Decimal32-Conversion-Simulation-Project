@@ -104,22 +104,28 @@ class Ui_MainWindow(object):
         self.vrtLO_roundingOpt.setObjectName(u"vrtLO_roundingOpt")
         self.vrtLO_roundingOpt.setContentsMargins(5, 5, 5, 5)
         self.rdBtn_nearEven = QRadioButton(self.centralwidget)
+        self.btnGrp_roundMeth = QButtonGroup(MainWindow)
+        self.btnGrp_roundMeth.setObjectName(u"btnGrp_roundMeth")
+        self.btnGrp_roundMeth.addButton(self.rdBtn_nearEven)
         self.rdBtn_nearEven.setObjectName(u"rdBtn_nearEven")
         self.rdBtn_nearEven.setChecked(True)
 
         self.vrtLO_roundingOpt.addWidget(self.rdBtn_nearEven)
 
         self.rdBtn_floor = QRadioButton(self.centralwidget)
+        self.btnGrp_roundMeth.addButton(self.rdBtn_floor)
         self.rdBtn_floor.setObjectName(u"rdBtn_floor")
 
         self.vrtLO_roundingOpt.addWidget(self.rdBtn_floor)
 
         self.rdBtn_ceil = QRadioButton(self.centralwidget)
+        self.btnGrp_roundMeth.addButton(self.rdBtn_ceil)
         self.rdBtn_ceil.setObjectName(u"rdBtn_ceil")
 
         self.vrtLO_roundingOpt.addWidget(self.rdBtn_ceil)
 
         self.rdBtn_nearZero = QRadioButton(self.centralwidget)
+        self.btnGrp_roundMeth.addButton(self.rdBtn_nearZero)
         self.rdBtn_nearZero.setObjectName(u"rdBtn_nearZero")
 
         self.vrtLO_roundingOpt.addWidget(self.rdBtn_nearZero)
@@ -222,9 +228,11 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.LnEd_userInput.setText(QCoreApplication.translate("MainWindow", u"69", None))
+        self.LnEd_userInput.setText("")
+        self.LnEd_userInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Decimal-32 Floating Point", None))
         self.Lb_userInput.setText(QCoreApplication.translate("MainWindow", u"x 10 ^", None))
-        self.LnEd_baseInput.setText(QCoreApplication.translate("MainWindow", u"1", None))
+        self.LnEd_baseInput.setText("")
+        self.LnEd_baseInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"e", None))
         self.Lb_errorMessage.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#ff0000;\">ERROR: Sample Error</span></p></body></html>", None))
         self.Lb_roundingMeth.setText(QCoreApplication.translate("MainWindow", u"Rounding methods:", None))
         self.rdBtn_nearEven.setText(QCoreApplication.translate("MainWindow", u"Round to Nearest Zero Ties to Nearest Even", None))
@@ -234,8 +242,10 @@ class Ui_MainWindow(object):
         self.Btn_convert.setText(QCoreApplication.translate("MainWindow", u"Convert", None))
         self.Lb_binary.setText(QCoreApplication.translate("MainWindow", u"Binary", None))
         self.Lb_hexadecimal.setText(QCoreApplication.translate("MainWindow", u"Hexadecimal", None))
-        self.LnEd_hexadecimal.setText(QCoreApplication.translate("MainWindow", u"0x45", None))
-        self.LnEd_binary.setText(QCoreApplication.translate("MainWindow", u"0b0b1000101", None))
+        self.LnEd_hexadecimal.setText("")
+        self.LnEd_hexadecimal.setPlaceholderText(QCoreApplication.translate("MainWindow", u"XXXX XXXX", None))
+        self.LnEd_binary.setText("")
+        self.LnEd_binary.setPlaceholderText(QCoreApplication.translate("MainWindow", u"X XXXXX XXXXXX XXXXXXXXXXXXXXXXXXXX", None))
         self.PshBtn_printText.setText(QCoreApplication.translate("MainWindow", u"Print into text file", None))
     # retranslateUi
 
