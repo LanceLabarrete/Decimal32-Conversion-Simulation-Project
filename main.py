@@ -66,7 +66,8 @@ def main():
 
     user_input = list(str(user_input))
     signBit = sign_bit(user_input[0])  # Gets the sign bit
-
+    print("user_input =", user_input)
+    print("signBit =", signBit)
     if user_input[0] == '-':
         user_input.remove('-')
 
@@ -79,6 +80,7 @@ def main():
     elif user_input[-1] == "False":
         user_input.pop()
 
+    print(user_input)
     output = [int(num) for num in user_input]
     # -------------------------------------------
 
@@ -420,12 +422,15 @@ def merge_num_list(nums):
 
 
 def normalize(decimalnumbers, basenumber):
-    # print("---BEFORE---")
-    # print("decimalnumbers:", decimalnumbers)
-    # print("basenumber", basenumber)
-    # print("---AFTER----")
-
+    raw_string = "----normalize({0}, {1})-----"
+    format_string = raw_string.format(decimalnumbers, basenumber)
+    print(format_string)
+    print("Before Line 433")
+    print("decimalnumbers = {0}".format(decimalnumbers))
+    print("(str)decimalnumbers = {0}".format(''.join(decimalnumbers)))
+    print("basenumber = {0}".format(basenumber))
     isBaseNumberUpdated = "False"
+
     if decimalnumbers[-2] == '.' and decimalnumbers[-1] == '0':
         decimalnumbers.pop()
         decimalnumbers.pop()
@@ -437,19 +442,27 @@ def normalize(decimalnumbers, basenumber):
         isBaseNumberUpdated = "True"
         decimalnumbers.pop()
 
-    # print("decimalnumbers:", decimalnumbers)
-    # print("basenumber", basenumber)
-
+    print("----Line 442----")
+    print("decimalnumbers = {0}".format(decimalnumbers))
+    print("(str)decimalnumbers = {0}".format(''.join(decimalnumbers)))
+    print("basenumber = {0}".format(basenumber))
     count_digits = len(decimalnumbers)
+
     if count_digits < 7:  # if there are less than 7 digits, pad zeros on the left
         # "max" is a function under math library
         # not a good idea to use it as a variable
-        max_bits = 7
-        while count_digits < max_bits:
+        max_digits = 7
+        while count_digits < max_digits:
             decimalnumbers.insert(0, '0')
             count_digits += 1
 
-    elif count_digits > 7:  # if there are less than 7 digits, move decimal dot to the right and round off
+        print("----Line 455----")
+        print("decimalnumbers = {0}".format(decimalnumbers))
+        print("(str)decimalnumbers = {0}".format(''.join(decimalnumbers)))
+        print("basenumber = {0}".format(basenumber))
+        count_digits = len(decimalnumbers)
+
+    elif count_digits > 7:  # if there are more than 7 digits, move decimal dot to the right and round off
         decimalnumbers.append('.')
         while True:
             if count_digits > 7:
@@ -462,11 +475,30 @@ def normalize(decimalnumbers, basenumber):
                 isBaseNumberUpdated = "True"
                 break
 
+        print("----Line 473----")
+        print("decimalnumbers = {0}".format(decimalnumbers))
+        print("(str)decimalnumbers = {0}".format(''.join(decimalnumbers)))
+        print("basenumber = {0}".format(basenumber))
+        count_digits = len(decimalnumbers)
+
         float_digits = list_to_float(decimalnumbers)
+
+        print("----Line 480----")
+        print("decimalnumbers = {0}".format(decimalnumbers))
+        print("(str)decimalnumbers = {0}".format(''.join(decimalnumbers)))
+        print("float_digits = {0}".format(float_digits))
+        print("basenumber = {0}".format(basenumber))
+        count_digits = len(decimalnumbers)
+
         # float_digits = round(float_digits)
         # lets the user decide which rounding method
         float_digits = which_rounding_method(float_digits)
         decimalnumbers = list(str(float_digits))
+
+        print("----Line 490----")
+        print("decimalnumbers = {0}".format(decimalnumbers))
+        print("basenumber = {0}".format(basenumber))
+        count_digits = len(decimalnumbers)
 
     if isBaseNumberUpdated == "True":
         decimalnumbers.append(str(basenumber))
@@ -568,28 +600,94 @@ def hex_converter(decimaldigits):
     return decimalDictionary[decimalStr]
 
 
-def which_rounding_method(number):
-    selected_id = window.ui.btnGrp_roundMeth.checkedId()
+def which_rounding_method(number: float):
+    # selected_id = window.ui.btnGrp_roundMeth.checkedId()
+    selected_button = window.ui.btnGrp_roundMeth.checkedButton()
+    # print("selected_id = {0}".format(selected_id))
+    print("selected_button = {0}".format(selected_button))
 
-    if selected_id == 0:  # nearest zero
+    print("---which_rounding_method({0})---".format(number))
+
+    selected_id = {
+        window.ui.rdBtn_nearZero: 0,
+        window.ui.rdBtn_floor: 1,
+        window.ui.rdBtn_ceil: 2,
+        window.ui.rdBtn_nearEven: 3,
+    }
+    print("selected_id = {0}".format(selected_id[selected_button]))
+
+    # number = ''.join(number)
+
+    if selected_id[selected_button] == 0:  # nearest zero
         if number >= 0:
-            return int(number)
+            number = int(number)
+            print("number = {0}".format(number))
+            # return number
         else:
-            return -int(-number)
-    elif selected_id == 1:  # floor
-        return math.floor(number)
-    elif selected_id == 2:  # ceiling
-        return math.ceil(number)
-    elif selected_id == 3:  # ties to nearest even
+            number = -int(-number)
+            print("number = {0}".format(number))
+    elif selected_id[selected_button] == 1:  # floor
+        number = math.floor(number)
+        print("number = {0}".format(number))
+        # return math.floor(number)
+    elif selected_id[selected_button] == 2:  # ceiling
+        number = math.floor(number)
+        print("number = {0}".format(number))
+        # return math.ceil(number)
+    elif selected_id[selected_button] == 3:  # ties to nearest even
         number = round(number)
-        return number
+        print("number = {0}".format(number))
+
+    return number
+
+
+def toggle_visibility_layout(layout: QtWidgets.QLayout, show):
+    size = layout.count() - 1
+    while size >= 0:
+        item = layout.itemAt(size)
+        if isinstance(item, QtWidgets.QLayout):
+            print("is a layout")
+            toggle_visibility_layout(item, show)
+            size -= 1
+            continue
+
+        item = item.widget()
+
+        if show:
+            item.show()
+        else:
+            item.hide()
+        size -= 1
+
+
+def toggle_enable_buttongroup(group: QtWidgets.QButtonGroup, enable):
+    for button in group.buttons():
+        button.setEnabled(enable)
+
+
+def show_rounding_method(input_string):
+    print(input_string)
+    input_string = input_string.replace(".", "")
+
+    if len(input_string) > 7:
+        # window.ui.vrtLO_roundingMeth.show()
+        # toggle_visibility_layout(window.ui.vrtLO_roundingMeth, True)
+        toggle_enable_buttongroup(window.ui.btnGrp_roundMeth, True)
+        return
+
+    # toggle_visibility_layout(window.ui.vrtLO_roundingMeth, False)
+    toggle_enable_buttongroup(window.ui.btnGrp_roundMeth, False)
 
 
 if __name__ == '__main__':
     window.show()
     window.ui.Lb_errorMessage.hide()
+    # toggle_visibility_layout(window.ui.vrtLO_roundingMeth, False)
+    toggle_enable_buttongroup(window.ui.btnGrp_roundMeth, False)
+
     window.ui.LnEd_binary.setText("baby")
     window.ui.Btn_convert.pressed.connect(main)
     window.ui.LnEd_userInput.returnPressed.connect(main)
     window.ui.LnEd_baseInput.returnPressed.connect(main)
+    window.ui.LnEd_userInput.textChanged.connect(show_rounding_method)
     app.exec_()
